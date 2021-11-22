@@ -1,0 +1,28 @@
+
+:root {
+
+  /*Color Scheme */
+  --pink-red: #ef476f;
+  --mellow-yellow: #ffd166;
+  --teal: #06d6a0;
+  --light-blue: #118ab2;
+  --dark: #073b4c;
+
+}
+
+
+header {
+
+  height: 100px;
+  background-color: var(--dark);
+
+}
+
+header h1 {
+
+  font-size: 50px;
+  text-align: center;
+  padding: 20px;
+  color: var(--mellow-yellow);
+  
+}
