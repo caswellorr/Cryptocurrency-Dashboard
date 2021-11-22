@@ -1,0 +1,27 @@
+{
+  "name": "project-manhattan",
+  "version": "1.0.0",
+  "description": "Manhattan Crypts Dashboard",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caswellorr/Project-Manhattan.git"
+  },
+  "author": "C. Orr, L.Santiago, B. Turner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caswellorr/Project-Manhattan/issues"
+  },
+  "directories": {
+    
+  },
+  "homepage": "https://github.com/caswellorr/Project-Manhattan#readme",
+  "dependencies": {
+    "firebase": "^9.5.0",
+    "firebaseui": "^6.0.0",
+    "semver": "^7.3.5"
+  }
+}
