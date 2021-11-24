@@ -53,19 +53,18 @@
               console.log(errorCode + errorMessage);
   });
 })
-
-        document.getElementById("signOut").addEventListener('click' , function() {
-
-          signOut(auth).then(() => {
-            // User signed out
-            console.log("User signed out successful!");
-        })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-              consol.log(errorCode + errorMessage);
-    });
-  })
+// Sign Out function
+  //       document.getElementById("signOut").addEventListener('click' , function() {
+  //         signOut(auth).then(() => {
+  //           // User signed out
+  //           console.log("User signed out successful!");
+  //       })
+  //         .catch((error) => {
+  //           const errorCode = error.code;
+  //           const errorMessage = error.message;
+  //             consol.log(errorCode + errorMessage);
+  //   });
+  // })
 
         // Get my modal
         let modal = document.getElementById('loginModal');
