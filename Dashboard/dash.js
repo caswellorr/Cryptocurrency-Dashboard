@@ -17,21 +17,33 @@ function getCurrency () {
 }
 
 
-// ========== FETCH CURRENCIES FOR  JUMBOTRON GRAPH ==========
+// ========== FETCH CURRENCY FOR  JUMBOTRON GRAPH ==========
 
 function getApi (currency) {
 
   let end = Date.now()
-  let start = (end - 300000)
+  // 1637769600
+  let midnight = new Date()
+  midnight.setHours(0,0,0,0)
+  console.log((midnight))
+
+  console.log((Date.parse(midnight))/1000)
+  console.log(end)
+  console.log(typeof end)
+  let start = 1613750400
+  console.log(start)
+  console.log(typeof start)
+
+
   
-  let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=${start}&end=${end}&period=14400`
+  let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=1546300800&end=${end}&period=14400`
 
   fetch (requestUrl)
   .then (function (response){
     return response.json();
   })
-  .then(function (currencyData){
-    console.log(currencyData);
+  .then(function (currency){
+    console.log(currency);
 
   })
 
@@ -41,21 +53,17 @@ function getApi (currency) {
  }
 
 
+ //find current utc to input into end and evaluate however far back we want the api to give us
 
- let end = Date.now()
+//  let end = Date.now()
 
- let start = (end - 300000)
+//  let start = (end - 300000)
  
-
- console.log(start)
- console.log(end)
-
-
-//find current utc to input into end and evaluate however far back we want the api to give us
-
-// 
+//  console.log(start)
+//  console.log(end)
 
 // potentially for looping throught the data your getting back and inserting the data per element in the
+
 for (let i = 0; i < currencyData.length; i++) {
   const currentCurrency = currencyData[i];
   
@@ -140,31 +148,3 @@ $(() => {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-// function getChart () {
-
-//   let chartUrl = "https://poloniex.com/public?command=returnChartData&currencyPair=BTC_XMR&start=1546300800&end=1546646400&period=14400";
-
-//   fetch (chartUrl)
-//   .then (function (response){
-//     return response.json();
-//   })
-
-//   .then (function (chart){
-//     console.log (chart);
-//   })
-
-
-// }
-
-// getChart
