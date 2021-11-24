@@ -28,3 +28,7 @@ header h1 {
   color: var(--mellow-yellow);
   
 }
+
+#chart {
+  height: 440px;
+}
