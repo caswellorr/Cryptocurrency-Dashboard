@@ -1,7 +1,7 @@
 
 // =========== SEARCH BUTTON ================
 
-// Present limited options with jquery widget - top 5 currencies
+// Must search currency with its shorthand (BTC)
 
 // let searchBtn = document.getElementById('search-button');
 
@@ -14,7 +14,7 @@
 // }
 
 
-// ====== FETCH CURRENCIES =======
+// ========== FETCH CURRENCIES FOR  JUMBOTRON GRAPH ==========
 
 // function getApi () {
 
@@ -33,7 +33,6 @@
 
 // getApi()
 
-// // ========= JUMBOTRON CHART ==========
 // potentially for looping throught the data your getting back and inserting the data per element in the
 //for 
 let lval = currency[i].low
