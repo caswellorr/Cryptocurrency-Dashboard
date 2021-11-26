@@ -1,0 +1,101 @@
+body {
+  background: url("../img/bit_ManhattanBkg2.jpeg");
+  width: 1250px;
+  height: 781px;
+  font-family: "Ubuntu", sans-serif;
+  background-size: 100% 110%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  margin: 0;
+  padding: 0;
+}
+.login {
+  /* margin-left: 40% auto; */
+  padding-left: 25%;
+  margin-top: 255px;
+  max-width: 500px;
+  /* left: 300px; */
+}
+.login-header {
+  color: #06d6a0;
+  text-align: center;
+  font-size: 300%;
+}
+
+.login-form {
+  border: 5px solid #06d6a0;
+  background: #118ab2;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #000;
+}
+.login-form h1 {
+  color: #f2f2f2;
+  text-align: center;
+  font-size: 300%;
+}
+.login-form h3 {
+  text-align: left;
+  margin-left: 40px;
+  color: #f2f2f2;
+}
+.login-form {
+  /* margin-right: 100px; */
+
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-bottom: 10%;
+  margin: 5% auto;
+  text-align: center;
+}
+.login input[type="email"],
+.login input[type="password"] {
+  max-width: 400px;
+  width: 80%;
+  line-height: 3em;
+  font-family: "Ubuntu", sans-serif;
+  margin: 1em 2em;
+  border-radius: 5px;
+  border: 2px solid #f2f2f2;
+  outline: none;
+  padding-left: 10px;
+}
+.login-form input[type="button"] {
+  height: 30px;
+  width: 100px;
+  background: #ef476f;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+}
+.sign-up {
+  color: #f2f2f2;
+  margin-left: -70%;
+  cursor: pointer;
+  font-style: italic;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+/*Media Querie*/
+@media only screen and (min-width: 150px) and (max-width: 530px) {
+  .login-form h3 {
+    text-align: center;
+    margin: 0;
+  }
+  .sign-up,
+  .no-access {
+    margin: 10px 0;
+  }
+  .login-button {
+    margin-bottom: 10px;
+  }
+}
