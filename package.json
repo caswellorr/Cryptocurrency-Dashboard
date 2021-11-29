@@ -15,9 +15,7 @@
   "bugs": {
     "url": "https://github.com/caswellorr/Project-Manhattan/issues"
   },
-  "directories": {
-    
-  },
+  "directories": {},
   "homepage": "https://github.com/caswellorr/Project-Manhattan#readme",
   "dependencies": {
     "firebase": "^9.5.0",
