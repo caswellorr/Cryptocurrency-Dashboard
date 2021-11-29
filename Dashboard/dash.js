@@ -64,27 +64,31 @@ function getApi (currency) {
 
 // potentially for looping throught the data your getting back and inserting the data per element in the
 
+let dataSource = [
+
+];
+
 for (let i = 0; i < currencyData.length; i++) {
   const currentCurrency = currencyData[i];
   
+  let lVal = currency[i].low
+  let hVal = currency[i].high
+  let oVal = currency[i].open
+  let cVal = currency[i].close
+  
+  let datespan = currency[i].date
+  
+  let object = {date: new Date(datespanyear, datespanmonth, 1),
+    l: lval,
+    h: hVal,
+    o: oVal,
+    c: cVal,}
+
+    dataSource.push(object)
 }
-let lVal = currency[i].low
-let hVal = currency[i].high
-let oVal = currency[i].open
-let cVal = currency[i].close
 
-let datespan = currency[i].date
-let object = {date: new Date(datespanyear, datespanmonth, 1),
-  l: lval,
-  h: hVal,
-  o: oVal,
-  c: cVal,}
 
-dataSource.push(object)
 
-const dataSource = [
-
-];
 
 let coinName = document.getElementById('search-input').value;
 
