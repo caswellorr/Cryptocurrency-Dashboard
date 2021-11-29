@@ -45,18 +45,16 @@ function getApi(currency) {
       let oVal;
       let cVal;
 
-      let datespan;
-
       let object;
 
-      let currentDay = moment().format("Do");
-      let currentYear = moment().format("YYYY");
+      // let currentDay = moment().format("Do");
+      // let currentYear = moment().format("YYYY");
 
       let coinName = document.getElementById('search-input').value;
 
-      console.log(coinName);
-      console.log(currentDay);
-      console.log(currentYear);
+      // console.log(coinName);
+      // console.log(currentDay);
+      // console.log(currentYear);
 
       // ====== Loop thru data ========
 
@@ -67,12 +65,15 @@ function getApi(currency) {
         hVal = currentCurrency.high;
         oVal = currentCurrency.open;
         cVal = currentCurrency.close;
-
-        datespan = currentCurrency.date;
+            // convert unix to human format date to display on graph
+        let date = currentCurrency.date;
+        let milliseconds = date * 1000;
+        let dateObject = new Date(milliseconds);
+        let humanDateFormat = dateObject.toLocaleString();
 
         object = {
 
-          date: datespan,
+          date: humanDateFormat,
           l: lVal,
           h: hVal,
           o: oVal,
@@ -157,5 +158,8 @@ function getApi(currency) {
 
 // =========== Insert data into chart ========
 
+function displayChart (){
 
+  
+}
 
