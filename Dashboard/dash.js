@@ -1,100 +1,102 @@
 
-// =========== SEARCH BUTTON ================
+// =========== SEARCH BUTTON & FUNCTION ================
 
-// Must search currency with its shorthand (BTC)
+// Must search currency by its shorthand (BTC)***
 
 let searchBtn = document.getElementById('search-button');
 
-searchBtn.addEventListener('click', getCurrency )
+searchBtn.addEventListener('click', getCurrency)
 
-function getCurrency () {
+// Get Currency Function on click of search button
 
+
+function getCurrency() {
+  
   let currency = document.getElementById('search-input').value;
-    console.log(currency);
 
-    getApi(currency);
+  console.log(currency);
+
+  getApi(currency);
 
 }
 
 
 // ========== FETCH CURRENCY FOR  JUMBOTRON GRAPH ==========
 
-function getApi (currency) {
+function getApi(currency) {
 
   let end = Date.now()
-  // 1637769600
-  let midnight = new Date()
-  midnight.setHours(0,0,0,0)
-  console.log((midnight))
 
-  console.log((Date.parse(midnight))/1000)
-  console.log(end)
-  console.log(typeof end)
-  let start = 1613750400
-  console.log(start)
-  console.log(typeof start)
+  let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=1632700800&end=${end}&period=86400`
 
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (currency) {
+      currency = currency.slice(-10);
+      console.log(currency);
+    })
 
-  
-  let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=1546300800&end=${end}&period=14400`
-
-  fetch (requestUrl)
-  .then (function (response){
-    return response.json();
-  })
-  .then(function (currency){
-    console.log(currency);
-
-  })
-
-
-
-
- }
-
-
- //find current utc to input into end and evaluate however far back we want the api to give us
-
-//  let end = Date.now()
-
-//  let start = (end - 300000)
- 
-//  console.log(start)
-//  console.log(end)
-
-// potentially for looping throught the data your getting back and inserting the data per element in the
-
-let dataSource = [
-
-];
-
-for (let i = 0; i < currencyData.length; i++) {
-  const currentCurrency = currencyData[i];
-  
-  let lVal = currency[i].low
-  let hVal = currency[i].high
-  let oVal = currency[i].open
-  let cVal = currency[i].close
-  
-  let datespan = currency[i].date
-  
-  let object = {date: new Date(datespanyear, datespanmonth, 1),
-    l: lval,
-    h: hVal,
-    o: oVal,
-    c: cVal,}
-
-    dataSource.push(object)
 }
 
+// potentially for looping through the data your getting back and inserting the data per element in the chart
 
+// ========= Variables =========
 
+let dataSource = [];
+
+let lVal;
+let hVal;
+let oVal;
+let cVal;
+
+let datespan;
+
+let object;
+
+let currentDay = moment().format("Do");
+let currentYear = moment().format("YYYY");
 
 let coinName = document.getElementById('search-input').value;
 
+console.log(coinName);
+console.log(currentDay);
+console.log(currentYear);
+
+// ====== Loop thru data ========
+
+for (let i = 0; i < currency.length; i++) {
+  const currentCurrency = currency[i];
+
+  lVal = currentCurrency[i].low;
+  hVal = currentCurrency[i].high;
+  oVal = currentCurrency[i].open;
+  cVal = currentCurrency[i].close;
+
+  datespan = currentCurrency[i].date;
+
+  object = {
+
+    date: new Date(currentYear, 11, currentDay),
+    l: lVal,
+    h: hVal,
+    o: oVal,
+    c: cVal,
+
+  };
+
+  dataSource.push(object);
+
+}
+
+console.log(dataSource);
+
+// =========== Insert data into chart ========
+
 $(() => {
   $('#chart').dxChart({
-    title: 'Stock Price',
+    title: 'Coin Price',
     dataSource,
     commonSeriesSettings: {
       argumentField: 'date',
@@ -105,7 +107,7 @@ $(() => {
     },
     series: [
       {
-          // name : comes from input in searchbtn
+        // name : comes from input in searchbtn
         name: coinName,
         openValueField: 'o',
         highValueField: 'h',
@@ -143,9 +145,9 @@ $(() => {
       customizeTooltip(arg) {
         return {
           text: `Open: $${arg.openValue}<br/>`
-                            + `Close: $${arg.closeValue}<br/>`
-                            + `High: $${arg.highValue}<br/>`
-                            + `Low: $${arg.lowValue}<br/>`,
+            + `Close: $${arg.closeValue}<br/>`
+            + `High: $${arg.highValue}<br/>`
+            + `Low: $${arg.lowValue}<br/>`,
         };
       },
     },
