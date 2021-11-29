@@ -11,7 +11,7 @@ searchBtn.addEventListener('click', getCurrency)
 
 
 function getCurrency() {
-  
+
   let currency = document.getElementById('search-input').value;
 
   console.log(currency);
@@ -25,7 +25,8 @@ function getCurrency() {
 
 function getApi(currency) {
 
-  let end = Date.now()
+  let end = Math.round(Date.now() / 1000)
+  console.log(end)
 
   let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=1632700800&end=${end}&period=86400`
 
@@ -36,6 +37,114 @@ function getApi(currency) {
     .then(function (currency) {
       currency = currency.slice(-10);
       console.log(currency);
+
+      let dataSource = [];
+
+      let lVal;
+      let hVal;
+      let oVal;
+      let cVal;
+
+      let datespan;
+
+      let object;
+
+      let currentDay = moment().format("Do");
+      let currentYear = moment().format("YYYY");
+
+      let coinName = document.getElementById('search-input').value;
+
+      console.log(coinName);
+      console.log(currentDay);
+      console.log(currentYear);
+
+      // ====== Loop thru data ========
+
+      for (let i = 0; i < currency.length; i++) {
+        const currentCurrency = currency[i];
+            console.log(currentCurrency);
+        lVal = currentCurrency.low;
+        hVal = currentCurrency.high;
+        oVal = currentCurrency.open;
+        cVal = currentCurrency.close;
+
+        datespan = currentCurrency.date;
+
+        object = {
+
+          date: datespan,
+          l: lVal,
+          h: hVal,
+          o: oVal,
+          c: cVal,
+
+        };
+
+        dataSource.push(object);
+
+      }
+
+      console.log(dataSource);
+
+      $(() => {
+        $('#chart').dxChart({
+          title: 'Coin Prices',
+          dataSource,
+          commonSeriesSettings: {
+            argumentField: 'date',
+            type: 'candlestick',
+          },
+          legend: {
+            itemTextPosition: 'left',
+          },
+          series: [
+            {
+              // name : comes from input in searchbtn
+              name: coinName,
+              openValueField: 'o',
+              highValueField: 'h',
+              lowValueField: 'l',
+              closeValueField: 'c',
+              reduction: {
+                color: 'red',
+              },
+            },
+          ],
+          valueAxis: {
+            tickInterval: 1,
+            title: {
+              text: 'US dollars',
+            },
+            label: {
+              format: {
+                type: 'currency',
+                precision: 0,
+              },
+            },
+          },
+          argumentAxis: {
+            workdaysOnly: true,
+            label: {
+              format: 'shortDate',
+            },
+          },
+          export: {
+            enabled: true,
+          },
+          tooltip: {
+            enabled: true,
+            location: 'edge',
+            customizeTooltip(arg) {
+              return {
+                text: `Open: $${arg.openValue}<br/>`
+                  + `Close: $${arg.closeValue}<br/>`
+                  + `High: $${arg.highValue}<br/>`
+                  + `Low: $${arg.lowValue}<br/>`,
+              };
+            },
+          },
+        });
+      });
     })
 
 }
@@ -44,113 +153,9 @@ function getApi(currency) {
 
 // ========= Variables =========
 
-let dataSource = [];
 
-let lVal;
-let hVal;
-let oVal;
-let cVal;
-
-let datespan;
-
-let object;
-
-let currentDay = moment().format("Do");
-let currentYear = moment().format("YYYY");
-
-let coinName = document.getElementById('search-input').value;
-
-console.log(coinName);
-console.log(currentDay);
-console.log(currentYear);
-
-// ====== Loop thru data ========
-
-for (let i = 0; i < currency.length; i++) {
-  const currentCurrency = currency[i];
-
-  lVal = currentCurrency[i].low;
-  hVal = currentCurrency[i].high;
-  oVal = currentCurrency[i].open;
-  cVal = currentCurrency[i].close;
-
-  datespan = currentCurrency[i].date;
-
-  object = {
-
-    date: new Date(currentYear, 11, currentDay),
-    l: lVal,
-    h: hVal,
-    o: oVal,
-    c: cVal,
-
-  };
-
-  dataSource.push(object);
-
-}
-
-console.log(dataSource);
 
 // =========== Insert data into chart ========
 
-$(() => {
-  $('#chart').dxChart({
-    title: 'Coin Price',
-    dataSource,
-    commonSeriesSettings: {
-      argumentField: 'date',
-      type: 'candlestick',
-    },
-    legend: {
-      itemTextPosition: 'left',
-    },
-    series: [
-      {
-        // name : comes from input in searchbtn
-        name: coinName,
-        openValueField: 'o',
-        highValueField: 'h',
-        lowValueField: 'l',
-        closeValueField: 'c',
-        reduction: {
-          color: 'red',
-        },
-      },
-    ],
-    valueAxis: {
-      tickInterval: 1,
-      title: {
-        text: 'US dollars',
-      },
-      label: {
-        format: {
-          type: 'currency',
-          precision: 0,
-        },
-      },
-    },
-    argumentAxis: {
-      workdaysOnly: true,
-      label: {
-        format: 'shortDate',
-      },
-    },
-    export: {
-      enabled: true,
-    },
-    tooltip: {
-      enabled: true,
-      location: 'edge',
-      customizeTooltip(arg) {
-        return {
-          text: `Open: $${arg.openValue}<br/>`
-            + `Close: $${arg.closeValue}<br/>`
-            + `High: $${arg.highValue}<br/>`
-            + `Low: $${arg.lowValue}<br/>`,
-        };
-      },
-    },
-  });
-});
+
 
