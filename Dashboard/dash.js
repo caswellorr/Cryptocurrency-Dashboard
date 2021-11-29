@@ -47,25 +47,18 @@ function getApi(currency) {
 
       let object;
 
-      // let currentDay = moment().format("Do");
-      // let currentYear = moment().format("YYYY");
-
       let coinName = document.getElementById('search-input').value;
-
-      // console.log(coinName);
-      // console.log(currentDay);
-      // console.log(currentYear);
 
       // ====== Loop thru data ========
 
       for (let i = 0; i < currency.length; i++) {
         const currentCurrency = currency[i];
-            console.log(currentCurrency);
+        console.log(currentCurrency);
         lVal = currentCurrency.low;
         hVal = currentCurrency.high;
         oVal = currentCurrency.open;
         cVal = currentCurrency.close;
-            // convert unix to human format date to display on graph
+        
         let date = currentCurrency.date;
         let milliseconds = date * 1000;
         let dateObject = new Date(milliseconds);
@@ -89,7 +82,7 @@ function getApi(currency) {
 
       $(() => {
         $('#chart').dxChart({
-          title: 'Coin Prices',
+          title: 'Coin Prices (Past 10 Days)',
           dataSource,
           commonSeriesSettings: {
             argumentField: 'date',
@@ -100,7 +93,6 @@ function getApi(currency) {
           },
           series: [
             {
-              // name : comes from input in searchbtn
               name: coinName,
               openValueField: 'o',
               highValueField: 'h',
@@ -114,7 +106,7 @@ function getApi(currency) {
           valueAxis: {
             tickInterval: 1,
             title: {
-              text: 'US dollars',
+              text: 'US Dollars',
             },
             label: {
               format: {
@@ -148,18 +140,5 @@ function getApi(currency) {
       });
     })
 
-}
-
-// potentially for looping through the data your getting back and inserting the data per element in the chart
-
-// ========= Variables =========
-
-
-
-// =========== Insert data into chart ========
-
-function displayChart (){
-
-  
 }
 
