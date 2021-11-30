@@ -1,3 +1,31 @@
+// ============ Global Variables for newsApi ===========
+let newsApi = '7043854dc0f449fd9386019e6c883fb4'
+let newsCategory = "bitcoin"
+let newsUrl = `https://newsapi.org/v2/everything?q=${newsCategory}&apikey=${newsApi}`
+let newsImage = document.getElementById('newsImage')
+
+// ============ Get newsApi Function =============
+function getNews() {
+  fetch(newsUrl).then((response)=>{
+      return response.json()
+  })
+      .then((news)=>{
+
+          let sliceNews = news.articles.slice(-2);
+           
+          for(let i=0; i < sliceNews.length; i++){
+
+              console.log(news.articles[i].title)
+              console.log(news.articles[i].description)
+              console.log(news.articles[i].url)
+
+               newsImage.src = news.articles[i].urlToImage
+               document.querySelector('#newsArticle').insertAdjacentHTML("beforebegin", news.articles[i].title)
+          }
+          
+          });
+      }
+getNews();
 
 // =========== SEARCH BUTTON & FUNCTION ================
 
