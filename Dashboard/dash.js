@@ -25,6 +25,7 @@ function getNews() {
           
           });
       }
+
 getNews();
 
 // =========== SEARCH BUTTON & FUNCTION ================
