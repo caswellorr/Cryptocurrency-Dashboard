@@ -31,7 +31,7 @@
     const user = userCredential.user;
     // ...
     console.log("User created!");
-    window.location.href="../../Dashboard/dash.html";
+    window.location.href="./Cryptocurrency-Dashboard/Dashboard/dash.html";
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -52,7 +52,7 @@
     const user = userCredential.user;
     // ...
     console.log("User signed in!");
-    window.location.href="../../Dashboard/dash.html";
+    window.location.href="./Cryptocurrency-Dashboard/Dashboard/dash.html";
 
   })
   .catch((error) => {

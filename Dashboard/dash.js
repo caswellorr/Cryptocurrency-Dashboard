@@ -21,18 +21,18 @@ function getNews() {
               console.log(news.articles[i].description)
               console.log(news.articles[i].url)
 
-               newsImage.src = news.articles[2].urlToImage
-               newsImage1.src = news.articles[4].urlToImage
+               newsImage.src = news.articles[3].urlToImage
+               newsImage1.src = news.articles[5].urlToImage
 
                document.querySelector('#newsTitle').insertAdjacentHTML("beforebegin", news.articles[i].title)
                document.querySelector('#newsTitle1').insertAdjacentHTML("beforebegin", news.articles[2].title)
                document.querySelector('#newsArticle').insertAdjacentHTML("beforebegin", news.articles[i].description)
-               document.querySelector('#newsArticle1').insertAdjacentHTML("beforebegin", news.articles[4].title)
+               document.querySelector('#newsArticle1').insertAdjacentHTML("beforebegin", news.articles[3].title)
                document.getElementById('newsCard').onclick = function changeContent() {
-               document.getElementById('newsCard').url =   window.location.href=news.articles[2].url;
+               document.getElementById('newsCard').url =   window.location.href=news.articles[3].url;
                }
                document.getElementById('newsCard1').onclick = function changeContent() {
-               document.getElementById('newsCard1').url =   window.location.href=news.articles[4].url; 
+               document.getElementById('newsCard1').url =   window.location.href=news.articles[5].url; 
         }};
       })
 }
