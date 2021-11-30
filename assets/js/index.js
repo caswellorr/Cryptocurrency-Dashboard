@@ -52,7 +52,7 @@
     const user = userCredential.user;
     // ...
     console.log("User signed in!");
-    window.location.href="../../Dashboard/dash.html";
+    window.location.href="https://caswellorr.github.io/Cryptocurrency-Dashboard/Dashboard/dash.html";
 
   })
   .catch((error) => {
