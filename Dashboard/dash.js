@@ -3,6 +3,8 @@ let newsApi = '7043854dc0f449fd9386019e6c883fb4'
 let newsCategory = "bitcoin"
 let newsUrl = `https://newsapi.org/v2/everything?q=${newsCategory}&apikey=${newsApi}`
 let newsImage = document.getElementById('newsImage')
+let newsImage1 = document.getElementById('newsImage1')
+
 
 // ============ Get newsApi Function =============
 function getNews() {
@@ -11,7 +13,7 @@ function getNews() {
   })
       .then((news)=>{
 
-          let sliceNews = news.articles.slice(-2);
+          let sliceNews = news.articles.slice(-3);
            
           for(let i=0; i < sliceNews.length; i++){
 
@@ -19,8 +21,14 @@ function getNews() {
               console.log(news.articles[i].description)
               console.log(news.articles[i].url)
 
-               newsImage.src = news.articles[i].urlToImage
-               document.querySelector('#newsArticle').insertAdjacentHTML("beforebegin", news.articles[i].title)
+               newsImage.src = news.articles[7].urlToImage
+               newsImage1.src = news.articles[4].urlToImage
+
+               document.querySelector('#newsTitle').insertAdjacentHTML("beforebegin", news.articles[i].title)
+               document.querySelector('#newsTitle1').insertAdjacentHTML("beforebegin", news.articles[2].title)
+               document.querySelector('#newsArticle').insertAdjacentHTML("beforebegin", news.articles[i].description)
+               document.querySelector('#newsArticle1').insertAdjacentHTML("beforebegin", news.articles[4].title)
+
           }
           
           });

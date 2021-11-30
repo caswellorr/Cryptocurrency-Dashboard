@@ -45,6 +45,17 @@ footer h2 {
   color: var(--mellow-yellow);
   text-align: center;
   padding: 25px;
+
+}
   
+.card-img-top {
+  margin: auto;
+  padding-top: 10px;
+  box-shadow: 3px 3px;
+}
+
+.card {
+  background-color: #073b4c;
+  color: white;
 }
 
