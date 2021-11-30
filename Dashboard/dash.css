@@ -32,3 +32,13 @@ header h1 {
   height: 440px;
 }
 
+.card-img-top {
+  margin: auto;
+  padding-top: 10px;
+  box-shadow: 3px 3px;
+}
+.card {
+  background-color: #073b4c;
+  color: white;
+}
+
