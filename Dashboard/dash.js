@@ -13,7 +13,7 @@ function getNews() {
   })
       .then((news)=>{
 
-          let sliceNews = news.articles.slice(-3);
+          let sliceNews = news.articles.slice(-2);
            
           for(let i=0; i < sliceNews.length; i++){
 
@@ -21,20 +21,25 @@ function getNews() {
               console.log(news.articles[i].description)
               console.log(news.articles[i].url)
 
-               newsImage.src = news.articles[7].urlToImage
+               newsImage.src = news.articles[2].urlToImage
                newsImage1.src = news.articles[4].urlToImage
 
                document.querySelector('#newsTitle').insertAdjacentHTML("beforebegin", news.articles[i].title)
                document.querySelector('#newsTitle1').insertAdjacentHTML("beforebegin", news.articles[2].title)
                document.querySelector('#newsArticle').insertAdjacentHTML("beforebegin", news.articles[i].description)
                document.querySelector('#newsArticle1').insertAdjacentHTML("beforebegin", news.articles[4].title)
-
-          }
-          
-          });
-      }
+               document.getElementById('newsCard').onclick = function changeContent() {
+               document.getElementById('newsCard').url =   window.location.href=news.articles[2].url;
+               }
+               document.getElementById('newsCard1').onclick = function changeContent() {
+               document.getElementById('newsCard1').url =   window.location.href=news.articles[4].url; 
+        }};
+      })
+}
 
 getNews();
+
+
 
 // =========== SEARCH BUTTON & FUNCTION ================
 

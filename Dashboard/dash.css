@@ -23,9 +23,7 @@ header h1 {
 }
 
 #search {
-
-  margin-left:10px;
-
+  margin-left: 10px;
 }
 
 #chart {
@@ -33,21 +31,16 @@ header h1 {
 }
 
 footer {
-
-  background-color:var(--dark);
+  background-color: var(--dark);
   height: 100px;
-  
-
 }
 
 footer h2 {
-
   color: var(--mellow-yellow);
   text-align: center;
   padding: 25px;
-
 }
-  
+
 .card-img-top {
   margin: auto;
   padding-top: 10px;
@@ -59,3 +52,7 @@ footer h2 {
   color: white;
 }
 
+.btn {
+  display: inline-block;
+  text-align: center;
+}
