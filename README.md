@@ -1,6 +1,6 @@
 # 🏗️ CryptoCurrency Dashboard
 
-Live Link :
+Link : https://caswellorr.github.io/Cryptocurrency-Dashboard/
 
 ## Description 📖
 
@@ -16,7 +16,20 @@ The first API fetches data from Poloniex to be displayed on a candlestick graph.
 
 The second API fetches news articles on cryptocurrency from a news API.
 
-2-3 Screenshots / gifs of the app
+# Screenshots 📷 :
+
+* When first opening the dashboard, it should look like this:
+
+  ![alt text](./assets/img/opening.png)
+  
+* After searching a coin, the dashboard should display a graph like this:
+
+  ![alt text](./assets/img/graph.png)
+
+* If the user scrolls down, the user should see the articles displayed like this:
+
+  ![alt text](./assets/img/news.png)
+  
 
 ## Takeaways 💡
 
