@@ -29,14 +29,13 @@ getNews();
 
 // =========== SEARCH BUTTON & FUNCTION ================
 
-// Must search currency by its shorthand (BTC)***
+// Must search currency by its abbreviation (BTC)***
 
 let searchBtn = document.getElementById('search-button');
 
 searchBtn.addEventListener('click', getCurrency)
 
 // Get Currency Function on click of search button
-
 
 function getCurrency() {
 
@@ -46,15 +45,16 @@ function getCurrency() {
 
   getApi(currency);
 
-}
+};
 
 
 // ========== FETCH CURRENCY FOR  JUMBOTRON GRAPH ==========
 
 function getApi(currency) {
 
-  let end = Math.round(Date.now() / 1000)
-  console.log(end)
+  // convertsunix to seconds
+  let end = Math.round(Date.now() / 1000);
+  console.log(end);
 
   let requestUrl = `https://poloniex.com/public?command=returnChartData&currencyPair=USDT_${currency}&start=1632700800&end=${end}&period=86400`
 
@@ -65,6 +65,8 @@ function getApi(currency) {
     .then(function (currency) {
       currency = currency.slice(-10);
       console.log(currency);
+
+      // ====== Variables ==== 
 
       let dataSource = [];
 
@@ -86,7 +88,8 @@ function getApi(currency) {
         hVal = currentCurrency.high;
         oVal = currentCurrency.open;
         cVal = currentCurrency.close;
-        
+
+        // Converts Unix to human date format
         let date = currentCurrency.date;
         let milliseconds = date * 1000;
         let dateObject = new Date(milliseconds);
@@ -104,9 +107,11 @@ function getApi(currency) {
 
         dataSource.push(object);
 
-      }
+      };
 
       console.log(dataSource);
+
+      // Display data onto graph
 
       $(() => {
         $('#chart').dxChart({
@@ -166,7 +171,7 @@ function getApi(currency) {
           },
         });
       });
-    })
+    });
 
-}
+};
 
