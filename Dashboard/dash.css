@@ -29,6 +29,28 @@ header h1 {
   
 }
 
+#search {
+
+  margin-left:10px;
+
+}
+
 #chart {
   height: 440px;
+}
+
+footer {
+
+  background-color:var(--dark);
+  height: 100px;
+  
+
+}
+
+footer h2 {
+
+  color: var(--mellow-yellow);
+  text-align: center;
+  padding: 25px;
+  
 }
